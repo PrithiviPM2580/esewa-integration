@@ -1,6 +1,6 @@
 const Failure = () => {
     return (
-        <div></div>
+        <div>Failure</div>
     )
 }
 

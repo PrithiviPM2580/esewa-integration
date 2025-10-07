@@ -13,7 +13,7 @@ const transcationSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["PENDING", "COMPLETED", "FAILED"],
+      enum: ["PENDING", "COMPLETE", "FAILED", "REFUNDED"],
       default: "PENDING",
     },
   },

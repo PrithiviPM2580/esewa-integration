@@ -1,6 +1,6 @@
 const Payment = () => {
     return (
-        <div></div>
+        <div>Payment</div>
     )
 }
 
