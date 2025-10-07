@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import {
+  esewaInitiatePayment,
+  paymentStatus,
+} from "./src/controllers/esewa.controller.js";
 
 import connectDB from "./src/config/db.js";
 
@@ -17,7 +21,7 @@ app.get("/", (req, res) => {
   res.send("Hello from the backend!");
 });
 
-app.post("/initiate-payment", EsewaInitiatePayment);
+app.post("/initiate-payment", esewaInitiatePayment);
 app.post("/payment-status", paymentStatus);
 
 app.listen(PORT, () => {

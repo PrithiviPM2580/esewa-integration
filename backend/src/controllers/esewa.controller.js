@@ -1,7 +1,7 @@
 import { EsewaPaymentGateway, EsewaCheckStatus } from "esewajs";
 import Transcation from "../models/transcation.model";
 
-export const EsewaInitiatePayment = async (req, res) => {
+export const esewaInitiatePayment = async (req, res) => {
   const { amount, productId } = req.body; //data coming from frontend
   try {
     const reqPayment = await EsewaPaymentGateway(
@@ -22,7 +22,7 @@ export const EsewaInitiatePayment = async (req, res) => {
       return res.status(400).json("error sending data");
     }
     if (reqPayment.status === 200) {
-      const transaction = new Transaction({
+      const transaction = new Transcation({
         product_id: productId,
         amount: amount,
       });
@@ -41,7 +41,7 @@ export const paymentStatus = async (req, res) => {
   const { product_id } = req.body; // Extract data from request body
   try {
     // Find the transaction by its signature
-    const transaction = await Transaction.findOne({ product_id });
+    const transaction = await Transcation.findOne({ product_id });
     if (!transaction) {
       return res.status(400).json({ message: "Transaction not found" });
     }
@@ -57,7 +57,7 @@ export const paymentStatus = async (req, res) => {
       // Update the transaction status
       transaction.status = paymentStatusCheck.data.status;
       await transaction.save();
-      res
+      return res
         .status(200)
         .json({ message: "Transaction status updated successfully" });
     }
