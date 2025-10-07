@@ -1,5 +1,5 @@
 import { EsewaPaymentGateway, EsewaCheckStatus } from "esewajs";
-import Transcation from "../models/transcation.model";
+import Transcation from "../models/transcation.model.js";
 
 export const esewaInitiatePayment = async (req, res) => {
   const { amount, productId } = req.body; //data coming from frontend
